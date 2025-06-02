@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - VerticalVerde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #38a169;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #38a169;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 3rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDIwIDAgTCAwIDAgMCAyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIgLz48L3N2Zz4=') repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 3rem 2rem;
+        }
+
+        .section:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #38a169;
+            border-radius: 2px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #68d391, #38a169);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #38a169;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #38a169;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #2f855a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.4);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+        }
+
+        .quick-contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quick-contact-item {
+            background: linear-gradient(45deg, #4299e1, #3182ce);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-contact-item::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .quick-contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
+        }
+
+        .quick-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-section {
+            background: #f0fff4;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: #718096;
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            color: #38a169;
+            font-weight: bold;
+        }
+
+        .office-hours {
+            background: linear-gradient(45deg, #ed8936, #dd6b20);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .hour-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 0;
+        }
+
+        .footer a {
+            color: #68d391;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .success-message {
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error-message {
+            background: #fed7d7;
+            color: #742a2a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🌿 VerticalVerde</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#systems">Systems</a></li>
+                <li><a href="index.html#plants">Plants</a></li>
+                <li><a href="index.html#benefits">Benefits</a></li>
+                <li><a href="index.html#maintenance">Care</a></li>
+                <li><a href="contact.html">Contact</a></li>
+				 <li><a href="terms.html">Terms</a></li>
+				  <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Get Growing with Us</h1>
+            <p>Have questions about vertical gardening? Need personalized advice? We're here to help you cultivate success in your vertical garden journey.</p>
+        </div>
+    </section>
+
+    <main class="main-content container">
+        <section class="section" id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3 style="color: #38a169; margin-bottom: 1.5rem;">Send us a Message</h3>
+                    
+                    <div class="success-message" id="success-message">
+                        Thank you for your message! We'll get back to you within 24 hours.
+                    </div>
+                    
+                    <div class="error-message" id="error-message">
+                        Please fill in all required fields.
+                    </div>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic</option>
+                                <option value="getting-started">Getting Started</option>
+                                <option value="plant-selection">Plant Selection</option>
+                                <option value="system-advice">System Recommendations</option>
+                                <option value="troubleshooting">Troubleshooting</option>
+                                <option value="maintenance">Maintenance Help</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Your Gardening Experience</label>
+                            <select id="experience" name="experience">
+                                <option value="">Select your level</option>
+                                <option value="beginner">Complete Beginner</option>
+                                <option value="some-experience">Some Experience</option>
+                                <option value="experienced">Experienced Gardener</option>
+                                <option value="expert">Expert/Professional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="space">Available Space</label>
+                            <select id="space" name="space">
+                                <option value="">Select your space type</option>
+                                <option value="balcony">Balcony/Patio</option>
+                                <option value="indoor">Indoor Space</option>
+                                <option value="small-yard">Small Yard</option>
+                                <option value="large-yard">Large Yard</option>
+                                <option value="commercial">Commercial Space</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your vertical gardening goals, challenges, or questions. The more details you provide, the better we can help!" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message 🌱</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem; position: relative; z-index: 1;">Get in Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>hello@verticalverde.com</p>
+                            <p>We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                  
+                 
+               
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-contact">
+                <div class="quick-contact-item" onclick="openEmailClient('getting-started')">
+                    <div class="quick-icon">🌱</div>
+                    <h3>New to Vertical Gardening?</h3>
+                    <p>Get our beginner's guide and personalized system recommendations</p>
+                </div>
+                
+                <div class="quick-contact-item" onclick="openEmailClient('plant-problems')">
+                    <div class="quick-icon">🚨</div>
+                    <h3>Plant Problems?</h3>
+                    <p>Send us photos and get expert diagnosis and treatment advice</p>
+                </div>
+                
+                <div class="quick-contact-item" onclick="openEmailClient('system-help')">
+                    <div class="quick-icon">🔧</div>
+                    <h3>System Setup Help</h3>
+                    <p>Need help choosing or installing your vertical garden system?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="office-hours">
+                <h3 style="margin-bottom: 1rem;">Our Support Hours</h3>
+                <p>We're here to help you grow successfully!</p>
+                
+                <div class="hours-grid">
+                    <div class="hour-item">
+                        <strong>Email Support</strong><br>
+                        24/7 - We respond within 24 hours
+                    </div>
+                    <div class="hour-item">
+                        <strong>Live Chat</strong><br>
+                        Mon-Fri: 9AM - 6PM EST
+                    </div>
+                    <div class="hour-item">
+                        <strong>Community Forum</strong><br>
+                        24/7 peer support
+                    </div>
+                    <div class="hour-item">
+                        <strong>Video Consultations</strong><br>
+                        By appointment only
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-section">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        What's the best vertical garden system for beginners?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We recommend starting with a simple tower garden or wall-mounted pocket system. These are affordable, easy to set up, and perfect for learning the basics. Begin with herbs and leafy greens - they're forgiving and provide quick results that build confidence.
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        How much space do I need for a vertical garden?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        You can start with as little as 2 square feet! A basic tower system fits in a 2x2 foot space, while wall-mounted systems only need vertical wall space. Even a small balcony or patio corner can accommodate a productive vertical garden.
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        What plants work best in vertical gardens?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Leafy greens (lettuce, spinach, kale), herbs (basil, cilantro, parsley), and strawberries are excellent choices. These plants have shallow root systems and adapt well to container growing. Avoid large plants like full-size tomatoes unless you have a robust support system.
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        How often do I need to water my vertical garden?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Vertical gardens typically need daily watering, especially in hot weather. The top containers dry out fastest. Check soil moisture daily and water when the top inch feels dry. Consider drip irrigation systems for consistent watering.
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        Can I grow vegetables indoors vertically?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! With proper LED grow lights, you can grow fresh vegetables year-round indoors. Focus on leafy greens, herbs, and compact varieties. You'll need lights that provide at least 30-50 watts per square foot for most vegetables.
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        Do you offer consultations or setup services?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer virtual consultations to help you plan your vertical garden system. We can review your space, recommend systems, and provide ongoing support. Contact us to schedule a personalized consultation session.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+	 <div class="footer-section">
+                  
+                    <p>Address : 318 S Garfield Ave, Monterey Park, California 91754
+</p>
+              
+            </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 VerticalVerde. Ready to grow vertically? <a href="index.html">Start your journey</a> today!</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html">Home</a> • 
+                <a href="index.html#systems">Systems</a> • 
+                <a href="index.html#plants">Plants</a> • 
+                <a href="index.html#benefits">Benefits</a> • 
+                <a href="#contact">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                showMessage('error', 'Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            showMessage('success', 'Thank you for your message! We\'ll get back to you within 24 hours.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        function showMessage(type, text) {
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            
+            // Hide both messages first
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+            
+            // Show appropriate message
+            if (type === 'success') {
+                successMsg.textContent = text;
+                successMsg.style.display = 'block';
+            } else {
+                errorMsg.textContent = text;
+                errorMsg.style.display = 'block';
+            }
+            
+            // Scroll to top of form
+            document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // FAQ toggle functionality
+        function toggleFAQ(item) {
+            const answer = item.querySelector('.faq-answer');
+            const toggle = item.querySelector('.faq-toggle');
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                toggle.textContent = '+';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-toggle').forEach(tog => {
+                    tog.textContent = '+';
+                });
+                
+                // Open clicked FAQ
+                answer.style.display = 'block';
+                toggle.textContent = '−';
+            }
+        }
+        
+        // Quick contact functions
+        function openEmailClient(topic) {
+            const subjects = {
+                'getting-started': 'Getting Started with Vertical Gardening',
+                'plant-problems': 'Plant Problem Diagnosis Help',
+                'system-help': 'Vertical Garden System Setup Help'
+            };
+            
+            const subject = subjects[topic] || 'Vertical Gardening Question';
+            const email = 'hello@verticalverde.com';
+            const body = `Hi VerticalVerde team,\n\nI need help with: ${subject}\n\nMy details:\n- Experience level: \n- Available space: \n- Specific question: \n\nThank you!`;
+            
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+        
+        // Form field enhancements
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
